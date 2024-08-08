@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# This script for installing jenkins on your AWS Server
+
+####################################################################################
+
+set -x
+set -o
+set -e
+
+yum install git java-1.8.0-openjdk maven -y
+
+amazon-linux-extras install java-openjdk11 -y
+
+update-alternatives --config java
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+  sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+
+yum install jenkins
